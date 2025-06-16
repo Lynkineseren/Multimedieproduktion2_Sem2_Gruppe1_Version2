@@ -106,3 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+//API vejr data
+/*https://dmigw.govcloud.dk/v2/metObs/collections/observation/items?api-key=INSERT_YOUR_API_KEY_HERE*/
+const apiKey = "81ae6f0c68b642d082495934251606";
+const domainWeather = "https://api.weatherapi.com/v1/current.json?key=";
+const sted = "&q=56.980309,10.300468"
+async function getWeather(){
+  const res =await fetch(domainWeather + apiKey + sted);
+  /* det hentede data gemmes i datawordpress, dette er også asynkront, så her anvendes await også for at vente på at vi har alt data inden det returenes som JSON */
+  const weather = await res.json();
+  console.log('weather:', weather)
+  /*logger data i consolen så vi kan se den */
+  return weather;
+}
+getWeather();
+
+/*https://api.weatherapi.com/v1/current.json?key=81ae6f0c68b642d082495934251606&q=56.980309,10.300468&aqi=no*/
