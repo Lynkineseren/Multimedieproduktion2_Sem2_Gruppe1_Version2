@@ -1,11 +1,22 @@
-async function init() {
-
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.getElementById("loader");
+  const content = document.querySelector(".priserData");
+  const loaderText = document.querySelector(".loader-text");
+  
+  loader.style.display = "block";
+  loaderText.style.display = "block";
+  content.style.display = "none";
+  
+  
+  async function init() {
+    
     const data = await getData()
     // renderActivities(data);
     renderPriser(data);
-
-
-}
+    loader.style.display = "none";
+    loaderText.style.display = "none";
+    content.style.display = "block";
+  }
 
 init()
 /*Indsætter indhold på priser siden */
@@ -445,4 +456,7 @@ function renderPriser(data) {
   `
   /*kalder accordion funktionen her får at få den til at virke. da koden ellers kører før data er hentet ned */
   startAccodion();
+  
 }
+
+});
