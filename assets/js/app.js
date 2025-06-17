@@ -106,15 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+//
 //API vejr data
-/*https://dmigw.govcloud.dk/v2/metObs/collections/observation/items?api-key=INSERT_YOUR_API_KEY_HERE*/
+//
+// gemme variabler
 const apiKey = "81ae6f0c68b642d082495934251606";
 const domainWeather = "https://api.weatherapi.com/v1/current.json?key=";
+const domainWeatherMarine ="http://api.weatherapi.com/v1/marine.json?key=";
 const sted = "&q=56.980309,10.300468"
+// henter data
 async function getWeather(){
   const res =await fetch(domainWeather + apiKey + sted);
-  /* det hentede data gemmes i datawordpress, dette er også asynkront, så her anvendes await også for at vente på at vi har alt data inden det returenes som JSON */
+  /* det hentede data gemmes i weather, dette er også asynkront, så her anvendes await også for at vente på at vi har alt data inden det returenes som JSON */
   const weather = await res.json();
   console.log('weather:', weather)
   /*logger data i consolen så vi kan se den */
@@ -123,3 +126,60 @@ async function getWeather(){
 getWeather();
 
 /*https://api.weatherapi.com/v1/current.json?key=81ae6f0c68b642d082495934251606&q=56.980309,10.300468&aqi=no*/
+
+/*kalder asynkron funktion med awaitm fordi vi ønsker at vente på funktionen getWeather og getWeatherMarine har hentet alt data ned inden vi begynder at kalde funktionen renderWeather og getWeatherMarine, der skal sætte det hele ind i DOM */
+async function init() {
+    
+  const weatherData = await getWeather()
+  const weatherMarine = await getWeatherMarine()
+  // renderWeather;
+  renderWeather(weatherData);
+  renderMarine (weatherMarine);
+}
+
+init()
+
+
+//henter vandtemp!
+async function getWeatherMarine(){
+  const res2 =await fetch(domainWeatherMarine + apiKey + sted);
+  /* det hentede data gemmes i weather, dette er også asynkront, så her anvendes await også for at vente på at vi har alt data inden det returenes som JSON */
+  const weatherMarine = await res2.json();
+  console.log('weatherMarine:', weatherMarine)
+ 
+  /*logger data i consolen så vi kan se den */
+  return weatherMarine;
+}
+getWeatherMarine();
+//indsætter dagens vejrudsigt på forsiden
+
+function renderWeather (weather){
+  const tempDay = document.querySelectorAll(".weatherForside");
+   tempDay.forEach (tempDay => {
+
+   
+   tempDay.innerHTML += `
+          <div>
+            <img src ="${weather.current.condition.icon}" alt= "vejr ikon">
+            <p class="apiDMITemp">${weather.current.temp_c}</p>
+          </div>
+          `
+          
+          ;
+   });
+  }
+
+// indsæt vand temp
+  function renderMarine (weatherMarine){
+    const tempDay = document.querySelectorAll(".weatherForside");
+     tempDay.forEach (tempDay => {
+     tempDay.innerHTML += `
+            <div>
+              <i class="fa-solid fa-water"></i>
+              <p class="apiDMITemp">${weatherMarine.forecast.forecastday[0].hour[0].water_temp_c}</p>
+            </div>
+            `
+            
+            ;
+     });
+    }
