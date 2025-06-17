@@ -104,39 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 
-  closeButtons.forEach(btn => { // Laver en forEach på hver modal knap 
-    btn.addEventListener('click', function () { // Lytter efter klik 
-      this.closest('.picture_expand').style.display = 'none';  // Når man trykker på krydset inde på modalet, vil class .picture_preview ikke bliver vist. 
-      });
-  });
-  
-
-  document.querySelectorAll('.expand-icon').forEach(icon => {
-    icon.addEventListener('click', e => {
-      const modalId = icon.closest('.preview-active').dataset.modal; // Get from parent
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.classList.add('active');
-      }
-    });
-  });
-  
-  document.querySelectorAll('.buttonClose').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const modal = e.target.closest('.picture_expand');
-      if (modal) {
-        modal.classList.remove('active'); // Hide modal with fade-out
-      }
-    });
-  });
-
-  document.querySelectorAll('.picture_expand').forEach(modal => {
-    modal.addEventListener('click', e => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-      }
-    });
-  });
 
 });
 
