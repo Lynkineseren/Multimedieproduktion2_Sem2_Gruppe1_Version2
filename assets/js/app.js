@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.expand-icon').forEach(icon => {
     icon.addEventListener('click', e => {
-      const modalId = icon.closest('.preview-active').dataset.modal; // Get from parent
+      const modalId = icon.closest('.preview-active').dataset.modal; 
       const modal = document.getElementById(modalId);
       if (modal) {
         modal.classList.add('active');
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', e => {
       const modal = e.target.closest('.picture_expand');
       if (modal) {
-        modal.classList.remove('active'); // Hide modal with fade-out
+        modal.classList.remove('active'); 
       }
     });
   });
