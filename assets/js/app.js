@@ -109,7 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
   
-
   document.querySelectorAll('.expand-icon').forEach(icon => {
     icon.addEventListener('click', e => {
       const modalId = icon.closest('.preview-active').dataset.modal; 
@@ -128,6 +127,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  document.querySelectorAll('.buttonClose_gallery').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const modal = btn.closest('.picture_gallery_expand');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    });
+  });
+
 
   document.querySelectorAll('.picture_expand').forEach(modal => {
     modal.addEventListener('click', e => {

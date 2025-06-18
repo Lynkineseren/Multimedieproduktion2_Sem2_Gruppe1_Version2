@@ -723,6 +723,70 @@ ul.breadcrumb {
 
 /* LEGEPLADS KODES HER */
 
+.picture_gallery_expand {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+.picture_gallery_expand.active {
+  display: flex;
+  opacity: 1;
+}
+
+.picture_gallery_expand img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 900px;
+  object-fit: cover;
+}
+
+.picture_gallery_content {
+  overflow: hidden;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto var(--sektion_spacer_mobile) auto;
+  border-radius: 8px;
+  position: relative;
+  top: 10%;
+}
+
+.preview-active img {
+  cursor: pointer;
+}
+
+.buttonClose_gallery {
+  position: absolute;
+  color: white;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 3rem;
+}
+
+.preview-active.image3-wrapper {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+}
+
+.preview-active.image4-wrapper {
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+}
+
+.preview-active img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .greytext {
   color: #808080;
   font-family: "georgiapro", sans-serif;
