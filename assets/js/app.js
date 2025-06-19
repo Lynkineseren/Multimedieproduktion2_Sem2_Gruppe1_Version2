@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
   
   document.querySelectorAll('.buttonClose').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -128,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  
+  document.querySelectorAll('.picture_expand').forEach(modal => {
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+  });
+  
 
   document.querySelectorAll('.buttonClose_gallery').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -139,13 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  document.querySelectorAll('.picture_expand').forEach(modal => {
-    modal.addEventListener('click', e => {
-      if (e.target === modal) {
-        modal.classList.remove('active');
-      }
-    });
-  });
 
 });
 
