@@ -159,16 +159,20 @@ const domainWeatherMarine ="http://api.weatherapi.com/v1/marine.json?key=";
 const sted = "&q=56.980309,10.300468"
 // henter data
 async function getWeather(){
+  try{
   const res =await fetch(domainWeather + apiKey + sted);
   /* det hentede data gemmes i weather, dette er også asynkront, så her anvendes await også for at vente på at vi har alt data inden det returenes som JSON */
   const weather = await res.json();
   console.log('weather:', weather)
-  /*logger data i consolen så vi kan se den */
   return weather;
+
+  } catch (fejlkode){
+    console.log("Fejl:", fejlkode)
+  }
+  /*logger data i consolen så vi kan se den */
 }
 getWeather();
 
-/*https://api.weatherapi.com/v1/current.json?key=81ae6f0c68b642d082495934251606&q=56.980309,10.300468&aqi=no*/
 
 /*kalder asynkron funktion med awaitm fordi vi ønsker at vente på funktionen getWeather og getWeatherMarine har hentet alt data ned inden vi begynder at kalde funktionen renderWeather og getWeatherMarine, der skal sætte det hele ind i DOM */
 async function init() {
@@ -184,14 +188,20 @@ init()
 
 
 //henter vandtemp!
+/*der er sat en try ind, "kør denne funktion" og et catch "fang fejlen og håndter den ved at logge den i consolen" */
 async function getWeatherMarine(){
+  try{
   const res2 =await fetch(domainWeatherMarine + apiKey + sted);
   /* det hentede data gemmes i weather, dette er også asynkront, så her anvendes await også for at vente på at vi har alt data inden det returenes som JSON */
   const weatherMarine = await res2.json();
   console.log('weatherMarine:', weatherMarine)
+  return weatherMarine;
+
+  } catch (fejlkode){
+    console.log("Fejl:", fejlkode)
  
   /*logger data i consolen så vi kan se den */
-  return weatherMarine;
+}
 }
 getWeatherMarine();
 //indsætter dagens vejrudsigt på forsiden
