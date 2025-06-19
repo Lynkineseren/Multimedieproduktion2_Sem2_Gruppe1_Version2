@@ -2,6 +2,7 @@
 //Hent data med API
 const domain ="https://mmd2.jqt-website.com/";
 const postsEndpoint = "wp-json/wp/v2/posts";
+//Obs vi bruger jo ikke denne! og kan godt hente billeder fra acf uden??
 const getRealImageUrls = "&acf_format=standard";
 /*asynkron kode der kan køre på samme tid som resten af js koden, så der ikke skal ventes på at alt data hentes først, inden der læses videre i koden. await gør at der skal vendes på at alt data er hentet før funktionen fortsætter. */
 async function getData(){
@@ -153,9 +154,11 @@ document.addEventListener('DOMContentLoaded', () => {
 //API vejr data
 //
 // gemme variabler
-const apiKey = "81ae6f0c68b642d082495934251606";
-const domainWeather = "https://api.weatherapi.com/v1/current.json?key=";
-const domainWeatherMarine ="http://api.weatherapi.com/v1/marine.json?key=";
+//bedst at gemme en API key i backend, men det har vi ikke
+/*der er sat en try ind, "kør denne funktion" og et catch "fang fejlen og håndter den ved at logge den i consolen" */
+const apiKey = "key=81ae6f0c68b642d082495934251606";
+const domainWeather = "https://api.weatherapi.com/v1/current.json?";
+const domainWeatherMarine ="https://api.weatherapi.com/v1/marine.json?";
 const sted = "&q=56.980309,10.300468"
 // henter data
 async function getWeather(){
