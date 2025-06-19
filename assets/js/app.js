@@ -3,7 +3,7 @@
 const domain ="https://mmd2.jqt-website.com/";
 const postsEndpoint = "wp-json/wp/v2/posts";
 //Obs vi bruger jo ikke denne! og kan godt hente billeder fra acf uden??
-const getRealImageUrls = "&acf_format=standard";
+// const getRealImageUrls = "&acf_format=standard";
 /*asynkron kode der kan køre på samme tid som resten af js koden, så der ikke skal ventes på at alt data hentes først, inden der læses videre i koden. await gør at der skal vendes på at alt data er hentet før funktionen fortsætter. */
 async function getData(){
     const res =await fetch(domain +postsEndpoint);
