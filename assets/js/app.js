@@ -180,7 +180,7 @@ async function getWeather(){
 getWeather();
 
 
-/*kalder asynkron funktion med awaitm fordi vi ønsker at vente på funktionen getWeather og getWeatherMarine har hentet alt data ned inden vi begynder at kalde funktionen renderWeather og getWeatherMarine, der skal sætte det hele ind i DOM */
+/*kalder asynkron funktion med await fordi vi ønsker at vente på funktionen getWeather og getWeatherMarine har hentet alt data ned inden vi begynder at kalde funktionen renderWeather og getWeatherMarine, der skal sætte det hele ind i DOM */
 async function init() {
     
   const weatherData = await getWeather()
