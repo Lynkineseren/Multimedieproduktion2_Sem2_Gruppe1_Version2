@@ -179,6 +179,7 @@ section {
   padding: 2rem 90% 2rem 10%;
 }
 
+/*Id sat på sidens a, så når man er på den pågældende side, vil a have dette id og underline*/
 #underline{
   text-decoration: underline;
 }
@@ -186,6 +187,7 @@ section {
 .globalNavigation a {
   text-decoration: none;
   color: white;
+  /*clamp giver browseren mulighed for at vælge hvilken font strørrelse der passer bedst. min, (anbefalet) og en max str*/
   font-size: clamp(1rem, 1.2vw, var(--p_desktop));
   font-family: "georgiapro", sans-serif;
 }
@@ -1273,7 +1275,7 @@ th {
 
 @media screen and (min-width: 1400px) {
   /* Navigation */
-
+/*hover over et menu punkt, vises dropdown menuen*/
   .globalNavigation li:hover ul.dropdown {
     display: block;
   }

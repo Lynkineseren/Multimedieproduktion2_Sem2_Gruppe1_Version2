@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   openButtons.forEach(btn => { // Laver en forEach for hver knap der skal åbnes.
     btn.addEventListener('click', function (e) {  // Lytter efter et klik.
       e.preventDefault(); // har en prevent default for ikke at hoppe til toppen af siden så vi istedet kan se vinduet for et modal.
-      const modalId = this.dataset.modal; // Henter data attributen for "data-modal" inde på HTML cardet, når man klikker på knappen. F.x data-modal="modal-1"
+      const modalId = this.dataset.modal; // Henter data attributen for "data-modal" inde på HTML cardet, når man klikker på knappen. F.x data-modal="modal-1", hente id'et
       const modal = document.getElementById(modalId); // Henter vores ID fra vores modal preview inde på HTML'en. F.x ID = "modal-1"
       if (modal) modal.style.display = 'block'; // Hvis der bliver fundet et ID, skal vores preview af ønsket card vises.
     });
