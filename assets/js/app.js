@@ -188,6 +188,7 @@ async function init() {
   // renderWeather;
   renderWeather(weatherData);
   renderMarine (weatherMarine);
+  // testAppend(weatherData);
 }
 
 init()
@@ -242,3 +243,20 @@ function renderWeather (weather){
             ;
      });
     }
+
+    /*kan også indsættes med append og createElement */
+// function testAppend (weather){
+//   const tempDay = document.querySelectorAll(".weatherForside");
+//   tempDay.forEach (tempDay =>{
+//     //gemmer i variabel tempIMg og lave et img
+//    const tempImg = document.createElement("img");
+//     tempImg.src= `${weather.current.condition.icon}`;
+//     tempImg.alt =`vejr ikon`;
+//     //gemmer i variable og laver et p
+//     const temptext = document.createElement("p");
+//     temptext.textContent =`${weather.current.temp_c}`;
+//     //appender.. indsættet det i DOM/(HTML delen)
+//     tempDay.append(tempImg);
+//     tempDay.append(temptext);
+//   });
+// }
